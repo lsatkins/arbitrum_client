@@ -14,7 +14,7 @@ const initialState = {
 
 export const getProtocols = createAsyncThunk('main/getProtocols', async (params, thunkAPI) => {
   try {
-    const response = await axios.get('http://localhost:3001/protocols');
+    const response = await axios.get('https://arbitrum-server.onrender.com/protocols');
     const protocols = response.data;
     return protocols;
   } catch (error) {
@@ -26,7 +26,7 @@ export const getProtocols = createAsyncThunk('main/getProtocols', async (params,
 export const getUserFavorites = createAsyncThunk('main/getUserFavorites', async (_, thunkAPI) => {
   try {
     const userID = thunkAPI.getState().main.userID;
-    const response = await axios.get('http://localhost:3001/favorites', {
+    const response = await axios.get('https://arbitrum-server.onrender.com/favorites', {
       headers: {
         'X-User-ID': userID
       }
@@ -43,7 +43,7 @@ export const addFavorite = createAsyncThunk('main/addFavorite', async (item, thu
   try {
 
     console.log(item)
-    const response = await axios.post('http://localhost:3001/favorites', item);
+    const response = await axios.post('https://arbitrum-server.onrender.com/favorites', item);
     console.log(response.data)
     const addedFavorite = response.data;
 
@@ -56,7 +56,7 @@ export const addFavorite = createAsyncThunk('main/addFavorite', async (item, thu
 
 export const removeFavorite = createAsyncThunk('main/removeFavorite', async (item, thunkAPI) => {
   try {
-    await axios.delete(`http://localhost:3001/favorites`, { data: item });
+    await axios.delete(`https://arbitrum-server.onrender.com/favorites`, { data: item });
 
     return item.protocolID;
   } catch (error) {

@@ -72,7 +72,7 @@ const Main = ( {isSmallScreen} ) => {
       const fetchEndTime = performance.now();
       const fetchTime = fetchEndTime - fetchStartTime;
       console.log(`Fetching protocols took ${fetchTime}ms`);
-      axios.post('http://localhost:3001/performance_logs', {
+      axios.post('https://arbitrum-server.onrender.com/performance_logs', {
         event_category: 'page_load',
         event_type: 'load_time_protocols',
         event_value: fetchTime,
@@ -288,7 +288,7 @@ const Main = ( {isSmallScreen} ) => {
     const loadTime = endTime - startTime
     console.log('Component loaded in: ', loadTime, 'ms');
     
-    axios.post('http://localhost:3001/performance_logs', {
+    axios.post('https://arbitrum-server.onrender.com/performance_logs', {
       event_category: 'page_load',
       event_type: 'load_time',
       event_value: loadTime,

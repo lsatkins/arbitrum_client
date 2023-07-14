@@ -10,7 +10,7 @@ const initialState = {
 
 const signUp = createAsyncThunk('auth/signUp', async (params, thunkAPI) => {
   try {
-    const response = await axios.post('http://localhost:3001/registration', params.formData);
+    const response = await axios.post('https://arbitrum-server.onrender.com/registration', params.formData);
     const jwt = response.data.token;
     return jwt;
   } catch (error) {
@@ -20,7 +20,7 @@ const signUp = createAsyncThunk('auth/signUp', async (params, thunkAPI) => {
 
 const signIn = createAsyncThunk('auth/signIn', async (params, thunkAPI) => {
   try {
-    const response = await axios.post('http://localhost:3001/login', params.formData);
+    const response = await axios.post('https://arbitrum-server.onrender.com/login', params.formData);
     const token = response.data.token;
     return token;
   } catch (error) {
@@ -31,7 +31,7 @@ const signIn = createAsyncThunk('auth/signIn', async (params, thunkAPI) => {
 const checkToken = createAsyncThunk('auth/checkToken', async (params, thunkAPI) => {
   if (localStorage.token) {
     try {
-      const response = await axios.get('http://localhost:3001/protected', {
+      const response = await axios.get('https://arbitrum-server.onrender.com/protected', {
         headers: {
           authorization: localStorage.token,
         },
@@ -48,7 +48,7 @@ const checkToken = createAsyncThunk('auth/checkToken', async (params, thunkAPI) 
 
 const googleSignUp = createAsyncThunk('auth/googleSignUp', async (_, thunkAPI) => {
   try {
-    const response = await axios.get('http://localhost:3001/auth/google/signup');
+    const response = await axios.get('https://arbitrum-server.onrender.com/auth/google/signup');
     const jwt = response.data.token;
     return jwt;
   } catch (error) {
@@ -58,7 +58,7 @@ const googleSignUp = createAsyncThunk('auth/googleSignUp', async (_, thunkAPI) =
 
 const googleSignIn = createAsyncThunk('auth/googleSignIn', async (params, thunkAPI) => {
   try {
-    const response = await axios.post('http://localhost:3001/auth/google/signin', params.formData);
+    const response = await axios.post('https://arbitrum-server.onrender.com/auth/google/signin', params.formData);
     const token = response.data.token;
     return token;
   } catch (error) {
