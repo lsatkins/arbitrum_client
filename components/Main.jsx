@@ -118,7 +118,6 @@ const Main = ( {isSmallScreen} ) => {
       }));
       setArbTVL(data[data.length - 1].tvl)
     } else if (dataType === 'FEES') {
-      console.log(data);
       marketData = data.totalDataChart.map(datapoint => ({
         time: datapoint[0],  // Already in Unix timestamp format
         value: datapoint[1],

@@ -6,24 +6,21 @@ const RequireAuth = (props) => {
 
     const dispatch = useDispatch()
 
-    const token = useSelector(state => state.auth.token)
-
     useEffect(() => {
       
         dispatch(checkToken())
       
-    }, [])
-
-    console.log(token)
-    
+    }, [dispatch])    
 
     useEffect(() => {
+        const token = localStorage.getItem('token');
       
-        // if(!token){
-        //     window.location.href = '/login';
-        // }
+        if (!token && window.location.pathname !== '/login' && window.location.pathname !== '/registration') {
+          console.log('no token');
+          window.location.href = '/login';
+        }
+      }, []);
       
-    }, [token])
     
   
     return props.children

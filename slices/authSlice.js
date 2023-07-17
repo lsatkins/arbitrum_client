@@ -36,6 +36,7 @@ const checkToken = createAsyncThunk('auth/checkToken', async (params, thunkAPI) 
           authorization: localStorage.token,
         },
       });
+      console.log(response.data)
 
       return response.data;
     } catch (error) {

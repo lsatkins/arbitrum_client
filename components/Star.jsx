@@ -5,7 +5,6 @@ import {AiOutlineStar} from 'react-icons/ai'
 import {addFavorite, removeFavorite, getUserFavorites} from '../slices/mainSlice'
 
 const Star = ({item}) => {
-    console.log('in star')
 
     const dispatch = useDispatch()
 
@@ -17,8 +16,6 @@ const Star = ({item}) => {
 
     const checkFavorite = () => {
 
-        console.log('inside check favorite')
-
         const isItemFavorite = favorites.some((favorite) => favorite.id === item.id);
 
         setIsFavorite(isItemFavorite)
@@ -28,7 +25,6 @@ const Star = ({item}) => {
     useEffect(() => {
       
         checkFavorite()
-        console.log(isFavorite)
 
     })
     
